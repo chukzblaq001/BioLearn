@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biolearn | Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="admin-page">
+<header class="site-header">
+  <a class="brand" href="index.html">Biolearn<span>.</span></a>
+  <nav><a href="index.html">← Back to learning</a></nav>
+</header>
+
+<main class="admin-main">
+  <section class="admin-intro">
+    <p class="eyebrow">CONTENT MANAGEMENT</p>
+    <h1>Biolearn Admin</h1>
+    <p>Add, edit, search and delete Biology questions for JAMB UTME, WAEC and NECO.</p>
+    <div class="notice">
+      <strong>Prototype notice:</strong> this page has no secure administrator login.
+      Questions are saved in this browser only. Do not publish this page for public
+      editing until server-side authentication and a database are added.
+    </div>
+  </section>
+
+  <div class="stats-grid admin-stats">
+    <article class="card stat"><span>Custom questions</span><strong id="admin-total">0</strong></article>
+    <article class="card stat"><span>JAMB / All</span><strong id="admin-jamb">0</strong></article>
+    <article class="card stat"><span>WAEC / All</span><strong id="admin-waec">0</strong></article>
+    <article class="card stat"><span>NECO / All</span><strong id="admin-neco">0</strong></article>
+  </div>
+
+  <section class="card admin-card">
+    <p class="eyebrow">QUESTION EDITOR</p>
+    <h2 id="form-heading">Add a question</h2>
+
+    <form id="admin-form">
+      <input id="admin-id" type="hidden">
+
+      <div class="field">
+        <label for="admin-question">Question</label>
+        <textarea id="admin-question" rows="3" required maxlength="1000"></textarea>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label for="admin-topic">Topic</label>
+          <select id="admin-topic" required>
+            <option value="">Choose topic</option>
+            <option>Cell Biology</option>
+            <option>Plant Biology</option>
+            <option>Human Biology</option>
+            <option>Genetics</option>
+            <option>Ecology</option>
+            <option>Biological Methods</option>
+            <option>Microbiology</option>
+            <option>Reproduction</option>
+            <option>Evolution</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="admin-category">Exam category</label>
+          <select id="admin-category" required>
+            <option value="">Choose category</option>
+            <option value="JAMB">JAMB UTME</option>
+            <option value="WAEC">WAEC</option>
+            <option value="NECO">NECO</option>
+            <option value="ALL">All exams</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label for="option-a">Option A</label>
+          <input id="option-a" required maxlength="300">
+        </div>
+        <div class="field">
+          <label for="option-b">Option B</label>
+          <input id="option-b" required maxlength="300">
+        </div>
+        <div class="field">
+          <label for="option-c">Option C</label>
+          <input id="option-c" required maxlength="300">
+        </div>
+        <div class="field">
+          <label for="option-d">Option D</label>
+          <input id="option-d" required maxlength="300">
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label for="admin-answer">Correct answer</label>
+          <select id="admin-answer" required>
+            <option value="">Choose answer</option>
+            <option value="0">A</option>
+            <option value="1">B</option>
+            <option value="2">C</option>
+            <option value="3">D</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="admin-explanation">Explanation</label>
+          <textarea id="admin-explanation" rows="3" required maxlength="1500"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button id="admin-save" class="button primary" type="submit">Save question</button>
+        <button id="admin-cancel" class="button secondary" type="button" hidden>Cancel edit</button>
+        <p id="admin-message" role="status"></p>
+      </div>
+    </form>
+  </section>
+
+  <section class="card admin-card">
+    <div class="split">
+      <div>
+        <p class="eyebrow">QUESTION BANK</p>
+        <h2>Manage questions</h2>
+      </div>
+      <div class="field search">
+        <label for="admin-search">Search</label>
+        <input id="admin-search" type="search" placeholder="Search question or topic">
+      </div>
+    </div>
+    <div id="admin-list"></div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="index.html">Biolearn<span>.</span></a>
+  <p>Content management prototype</p>
+</footer>
+</body>
+</html>

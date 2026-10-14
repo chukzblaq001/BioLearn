@@ -1,0 +1,196 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn Biology with lessons, daily questions and exam practice.">
+  <title>Biolearn | Learn Biology</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">Biolearn<span>.</span></a>
+  <button id="menu-toggle" class="menu-toggle" type="button">Menu</button>
+  <nav id="main-nav">
+    <a href="#lessons">Lessons</a>
+    <a href="#practice">Exam practice</a>
+    <a href="#daily">Daily question</a>
+    <a href="#progress">My progress</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">LEARN · PRACTISE · IMPROVE</p>
+      <h1>Understand Biology, one lesson at a time.</h1>
+      <p>Study core Biology topics and practise for JAMB UTME, WAEC and NECO.</p>
+      <a class="button primary" href="#lessons">Explore lessons</a>
+      <a class="button secondary" href="#practice">Start practising</a>
+    </div>
+    <aside class="hero-card">
+      <div class="big-icon">🧬</div>
+      <h2>Your Biology study space</h2>
+      <p>Learn at your pace and track your progress.</p>
+      <strong id="hero-completed">0</strong>
+      <span> lessons completed</span>
+    </aside>
+  </section>
+
+  <section id="lessons" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">LEARN THE BASICS</p>
+        <h2>Biology lessons</h2>
+      </div>
+      <p>Open a lesson, study the notes and mark it complete.</p>
+    </div>
+    <div id="lesson-grid" class="lesson-grid"></div>
+
+    <article id="lesson-viewer" class="card lesson-viewer" hidden>
+      <div class="split">
+        <div>
+          <p id="lesson-topic" class="eyebrow"></p>
+          <h3 id="lesson-title"></h3>
+        </div>
+        <button id="close-lesson" class="button secondary">Close</button>
+      </div>
+      <div id="lesson-content"></div>
+      <button id="complete-lesson" class="button primary">Mark as completed</button>
+      <p id="lesson-message" role="status"></p>
+    </article>
+  </section>
+
+  <section id="practice" class="section tinted">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">TEST YOURSELF</p>
+        <h2>Exam practice & timed CBT</h2>
+      </div>
+      <p>Custom questions from the Admin page are included when their category matches.</p>
+    </div>
+
+    <div class="card setup">
+      <div class="field">
+        <label for="exam-type">Exam category</label>
+        <select id="exam-type">
+          <option value="JAMB">JAMB UTME</option>
+          <option value="WAEC">WAEC</option>
+          <option value="NECO">NECO</option>
+          <option value="ALL">All questions</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="exam-mode">Mode</label>
+        <select id="exam-mode">
+          <option value="practice">Practice</option>
+          <option value="timed">Timed CBT (15 minutes)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="exam-count">Question count</label>
+        <select id="exam-count">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="all">All available</option>
+        </select>
+      </div>
+      <button id="start-exam" class="button primary">Start exam</button>
+    </div>
+
+    <div id="exam-area" class="card exam-area" hidden>
+      <div class="split">
+        <p id="exam-label" class="eyebrow">BIOLOGY EXAM</p>
+        <strong id="timer">No timer</strong>
+      </div>
+      <div class="progress-track">
+        <div id="exam-bar" class="progress-fill"></div>
+      </div>
+      <p class="muted">
+        <span id="question-number"></span> ·
+        <span id="question-topic"></span>
+      </p>
+      <h3 id="question-text"></h3>
+      <div id="question-options" class="options"></div>
+      <p id="exam-feedback" role="status"></p>
+      <div class="split">
+        <button id="previous-question" class="button secondary">Previous</button>
+        <button id="next-question" class="button primary">Next</button>
+        <button id="finish-exam" class="button danger">Finish exam</button>
+      </div>
+    </div>
+    <div id="exam-result" class="card result" hidden></div>
+  </section>
+
+  <section id="daily" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">A LITTLE EVERY DAY</p>
+        <h2>Question of the day</h2>
+      </div>
+      <p>Build a steady learning habit one question at a time.</p>
+    </div>
+    <div class="card daily-card">
+      <div class="daily-stats">
+        <div><strong id="daily-streak">0</strong><span>Day streak 🔥</span></div>
+        <div><strong id="daily-correct">0</strong><span>Correct answers</span></div>
+      </div>
+      <p id="daily-topic" class="eyebrow"></p>
+      <h3 id="daily-question"></h3>
+      <div id="daily-options" class="options"></div>
+      <p id="daily-feedback" role="status"></p>
+    </div>
+  </section>
+
+  <section id="progress" class="section tinted">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+        <h2>My progress</h2>
+      </div>
+      <p>Progress is saved in this browser on this device.</p>
+    </div>
+
+    <div class="stats-grid">
+      <article class="card stat">
+        <span>Lessons completed</span>
+        <strong id="completed-count">0</strong>
+        <small id="completion-percent">0% complete</small>
+        <div class="progress-track"><div id="lesson-progress" class="progress-fill"></div></div>
+      </article>
+      <article class="card stat">
+        <span>Exam attempts</span>
+        <strong id="attempt-count">0</strong>
+      </article>
+      <article class="card stat">
+        <span>Average score</span>
+        <strong id="average-score">0%</strong>
+      </article>
+      <article class="card stat">
+        <span>Best score</span>
+        <strong id="best-score">0%</strong>
+      </article>
+    </div>
+
+    <div class="card history">
+      <h3>Recent results</h3>
+      <div id="exam-history"></div>
+    </div>
+    <div class="card history">
+      <h3>Topic analysis</h3>
+      <div id="topic-analysis"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="#">Biolearn<span>.</span></a>
+  <p>Keep learning. Keep growing.</p>
+  <small>This is a learning prototype, not an official exam provider.</small>
+</footer>
+</body>
+</html>
